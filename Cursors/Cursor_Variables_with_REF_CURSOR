@@ -1,27 +1,106 @@
+create or replace procedure employee(dept number,emp_cur in out sys_refcursor) is
+begin
+    open emp_cur for select * from emp where deptno=dept;
+end;
 
-DECLARE
-TYPE customer_t IS REF CURSOR RETURN customers%rowtype;
-     c_customer customer_t;
-CREATE OR REPLACE FUNCTION get_direct_reports(
-      in_manager_id IN employees.manager_id%TYPE)
-   RETURN SYS_REFCURSOR
-AS
-   c_direct_reports SYS_REFCURSOR;
-BEGIN
+set serveroutput on
+declare
+emp_cur sys_refcursor;
+dept number:=&deptno;
+emprec emp%rowtype;
+begin
+employee(dept,emp_cur);
+loop
+fetch emp_cur into emprec;
+exit when emp_cur%notfound;
+dbms_output.put_line(emprec.empno|| ' '||emprec.ename||' '||emprec.sal);
+end loop;
+close emp_cur;
+end;
 
-   OPEN c_direct_reports FOR 
-   SELECT 
-      employee_id, 
-      first_name, 
-      last_name, 
-      email
-   FROM 
-      employees 
-   WHERE 
-      manager_id = in_manager_id 
-   ORDER BY 
-         first_name,   
-         last_name;
 
-   RETURN c_direct_reports;
-END;
+set SERVEROUTPUT on
+declare
+eno number;
+enm varchar2(10);
+salary number;
+cursor empcur(dept number) is select empno,ename,sal from emp where deptno=dept;
+begin
+open empcur(20);
+loop
+fetch empcur into eno,enm,salary;
+exit when empcur%notfound;
+dbms_output.put_line(eno||' '||enm||' '||salary);
+end loop;
+close empcur;
+end;
+
+
+
+create or replace function open_cur(dept number) return sys_refcursor is
+empcur sys_refcursor;
+begin  
+open empcur for select empno,ename from emp where deptno=dept;
+return empcur;
+end;
+
+declare
+
+
+
+create or replace function create_cur(dept number)return sys is
+ cursor empcur is select * from emp; 
+begin
+return empcur;
+end;
+
+set serveroutput on
+declare
+empcur sys_refcursor;
+emprec emp%rowtype;
+dept1 number:=10;
+dept2 number:=20;
+dept3 number:=30;
+begin
+emp_det(empcur(dept1);
+loop
+fetch empcur into emprec;
+exit when empcur%notfound;
+dbms_output.put_line(emprec.empno||' '||emprec.ename||' '||emprec.sal);
+end loop;
+end;
+
+
+
+create or replace function create_cur(dept number) return sys_refcursor is
+empcur sys_refcursor;
+begin
+    open empcur for select empno,ename,sal from emp where deptno=dept;
+    return empcur;
+end;
+
+
+create or replace function ee(dept number ) return sys_refcursor is
+eno number;
+enm varchar2(10);
+salary number;
+ecur sys_refcursor;
+begin
+ecur:=create_cur(dept);
+loop
+fetch ecur into eno,enm,salary;
+exit when ecur%notfound;
+dbms_output.put_line(eno||' '||enm||' '||salary);
+end loop;
+return ecur;
+end;
+
+set serveroutput on
+declare
+a sys_refcursor;
+begin
+a:=ee(30);
+close a;
+end;
+
+
