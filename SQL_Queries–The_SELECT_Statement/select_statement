@@ -1,1 +1,16 @@
 
+--create and insert table employee
+--selecting data from employee
+
+SELECT * FROM EMPLOYEE --it selects all data in table;
+SELECT WORKDEPT, AVG(SALARY) FROM EMPLOYEE GROUP BY WORKDEPT ORDER BY 2;
+SELECT SALARY+BONUS+COMM AS TOTAL_PAY FROM EMPLOYEE ORDER BY TOTAL_PAY;
+
+
+--selecting data from project table
+SELECT PROJNAME, PRSTDATE, PRENDATE  FROM PROJECT ORDER BY PRENDATE DESC;  -using order by clause
+EXEC SQL  DECLARE UP_CUR CURSOR FOR SELECT PROJNO, PRSTDATE, PRENDATE FROM PROJECT;   --using cursor
+
+--selecting data from project table
+SELECT * FROM DEPT;
+SELECT LOC FROM DEPT TABLE WHERE DEPTNO=10;  --using where clause
