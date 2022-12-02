@@ -1,0 +1,9 @@
+SELECT rollno,sname, CONCAT('19K61A0',rollno) regid FROM student order by rollno;
+
+SELECT CHARACTER_LENGTH('LANGUAGE LEARNING');
+
+SELECT ascii('u');
+
+LENGTH('Disgits');
+
+SELECT SUBSTRING('Sasi Institute of Technology and Engineering', 19, 1);
