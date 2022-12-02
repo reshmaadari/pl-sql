@@ -1,1 +1,3 @@
 
+SELECT * FROM dept WHERE Faculty_ID IN (   
+SELECT Faculty_ID FROM Faculty WHERE City = 'Vizag' OR City = 'Hyderabad' ) ;  
