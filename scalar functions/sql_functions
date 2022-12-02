@@ -1,0 +1,20 @@
+SUM():SELECT SUM(ColumnName)
+FROM TableName;
+
+COUNT():SELECT COUNT(ColumnName)
+FROM TableName
+WHERE Condition;
+
+AVG():SELECT AVG(ColumnName)
+FROM TableName;
+
+MIN():SELECT MIN(ColumnName)
+FROM TableName;
+
+MAX():SELECT MAX(ColumnName)
+FROM TableName;
+
+FIRST():SELECT FIRST(ColumnName)
+FROM TableName;
+LAST():SELECT LAST(ColumnName)
+FROM TableName;
