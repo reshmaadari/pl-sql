@@ -1,0 +1,18 @@
+A compound expression specifies a combination of other expressions.
+--some compound expressions 
+('CLARK' || 'SMITH') 
+LENGTH('MOOSE') * 57 
+SQRT(144) + 72 
+my_fun(TO_CHAR(sysdate,'DD-MMM-YY')
+--
+select
+     'this' as text
+from dual
+union
+select
+     'is'
+from dual
+union
+select
+     'compound query'
+from dual;

@@ -1,0 +1,18 @@
+SET SERVEROUTPUT ON
+DECLARE
+std_name varchar2(20);
+rno number(3);
+BEGIN
+select sname,rollno into std_name,rno from student where rollno=501;
+dbms_output.put_line('The student is '||std_name||' and roll number is 19K61A0'||rno);
+END;
+
+
+SET SERVEROUTPUT ON
+DECLARE
+emp_name varchar2(20);
+deptno number(3);
+BEGIN
+select ename,deptno into emp_name,deptnono from emp where empno=7369;
+dbms_output.put_line('The employee is '||emp_name||' and dept number is '||deptnono);
+END;

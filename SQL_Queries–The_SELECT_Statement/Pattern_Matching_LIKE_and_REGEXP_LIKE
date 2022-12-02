@@ -1,0 +1,13 @@
+using like:
+
+SELECT * FROM emp WHERE ename LIKE 'A%';
+SELECT * FROM emp WHERE ename LIKE '%A';
+SELECT * FROM emp WHERE ename LIKE '%or%';
+
+
+using regular expression:
+
+SELECT ename  from emp where regexp_like(name,'R');
+select ename from emp where regexp_like(city,'^A');
+select ename from emp where regexp_like(ename,'^G|^A');
+select ename from emp where regexp_like(ename,'i{2}','i');

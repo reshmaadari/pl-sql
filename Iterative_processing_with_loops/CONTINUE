@@ -1,0 +1,12 @@
+declare
+nu number(10):=10;
+nn number(10):=20;
+begin
+while nu<15 loop
+nu:=nu+1;
+if nu=13 then
+continue;
+end if;
+dbms_output.put_line(nu);
+end loop;
+end;

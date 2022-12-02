@@ -1,0 +1,26 @@
+create or replace procedure welcome as
+cursor empcur is select * from emp;
+emprec emp%rowtype;
+begin
+open empcur;
+loop
+fetch empcur into emprec;
+exit when empcur%notfound;
+dbms_output.put_line(emprec.empno ||' '||emprec.ename||' '||emprec.sal);
+end loop;
+close empcur;
+end;
+
+begin
+welcome;
+end;
+
+
+
+create or replace procedure hello is
+set serveroutput on;
+begin
+dbms_output.put_line('hello');
+end;
+set serveroutput on;
+execute hello;

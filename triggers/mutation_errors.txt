@@ -1,0 +1,29 @@
+--mutation errors can be solved by using compound triggers
+
+
+
+create or replace trigger my_trigg
+for insert on my_table compound trigger
+ss1 number;
+ss2 number;
+ss3 number;
+st number;
+total number;
+percen number;
+before statement is
+begin
+select s1 into ss1 from my_table where stno=st;
+select s2 into ss2 from my_table where stno=st;
+select s3 into ss3 from my_table where stno=st;
+total:=ss1+ss2+ss3;
+percen:=(total/300)*100;
+update my_table set ttl=total where stno=st;
+update my_table set per=percen where stno=st;
+end before statement;
+
+before each row is
+begin
+st:=:new.stno;
+dbms_output.put_line(st);
+end before each row;
+end my_trigg;

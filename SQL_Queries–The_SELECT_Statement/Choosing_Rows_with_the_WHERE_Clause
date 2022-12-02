@@ -1,0 +1,6 @@
+
+select * from emp where ename like 'SMITH';
+
+select empno,ename from emp where deptno in (10,20);
+
+select count(*) from emp group by deptno having deptno=30; 

@@ -1,0 +1,14 @@
+
+-> A relational database is a type of database that stores and provides access to data points that are related to one another. 
+-> Relational databases are based on the relational model, an intuitive, straightforward way of representing data in tables. 
+-> In a relational database, each row in the table is a record with a unique ID called the key. 
+-> The columns of the table hold attributes of the data, and each record usually has a value for each attribute, making it easy to establish the relationships among data points.
+-> A relational database management system (RDBMS) is a collection of programs and capabilities that enable IT teams and others to create, update,administer and 
+otherwise interact with a relational database. RDBMSes store data in the form of tables, with most commercial relational database management systems using
+-> Structured Query Language (SQL) to access the database. However, since SQL was invented after the initial development of the relational model, it is not 
+necessary for RDBMS use.
+-> The RDBMS is the most popular database system among organizations across the world. It provides a dependable method of storing and retrieving large amounts
+of data while offering a combination of system performance and ease of implementation.
+->An RDBMS is a type of database management system (DBMS) that stores data in a row-based table structure which connects related data elements. An RDBMS includes
+functions that maintain the security, accuracy, integrity and consistency of the data. This is different than the file storage used in a DBMS.A relational database management system (RDBMS or just RDB) is a common type of database that stores data in tables, so it can be used in relation to other 
+stored datasets

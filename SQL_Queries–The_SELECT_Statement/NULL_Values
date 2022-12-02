@@ -1,0 +1,26 @@
+
+A field with a NULL value is a field with no value.
+If a field in a table is optional, it is possible to insert a new record or update a record without adding a value.
+--null
+SELECT CustomerName, ContactName, Address
+FROM Customers
+WHERE Address IS NULL;
+
+-----creating null
+CREATE OR REPLACE PROCEDURE divide_it (
+    p_numerator     IN  NUMBER,
+    p_denominator   IN  NUMBER,
+    p_result        OUT NUMBER
+)
+IS
+BEGIN
+    IF p_denominator = 0 THEN
+        NULL;
+    ELSE
+        p_result := p_numerator / p_denominator;
+    END IF;
+END;
+---nulls and distinct
+select count(distinct(esal)) from emp;
+
+select distinct esal from emp where esal is NOT NULL;

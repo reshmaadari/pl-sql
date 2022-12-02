@@ -1,0 +1,14 @@
+set serveroutput on
+declare
+n1 number(5):=20;
+n2 number(5):=10;
+nu number(5);
+begin
+if n1>n2 then
+nu:=n1;
+n1:=n2;
+n2:=nu;
+dbms_output.put_line('small number : '||n1);
+dbms_output.put_line('largest number : '||n2);
+end if;
+end;

@@ -1,0 +1,15 @@
+declare
+nu number(10):=10;
+nn number(10):=20;
+begin
+while nu<15 loop
+dbms_output.put_line(nu);
+nu:=nu+1;
+while nn<25 loop
+dbms_output.put_line(nn);
+nn:=nn+1;
+exit when nn=22;
+exit when nu=12;
+end loop;
+end loop;
+end;

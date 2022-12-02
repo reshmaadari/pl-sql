@@ -1,0 +1,136 @@
+--function 1
+create or replace function addition(a in number,b in number)return number is c number;
+begin
+c:=a+b;
+return c;
+end;
+select addition(10,20) from dual;
+
+
+--function 2
+create or replace function reversee(a in number)return number is c number;
+temp number;
+re number;
+--res number:=0;
+begin
+temp:=a;
+c:=0;
+while temp>0 loop
+    re:=mod(temp,10);
+    c:=(re+c*10);
+    temp:=floor(temp/10);
+end loop;
+return c;
+end;
+
+select reversee(234) from dual;
+
+
+--function 3
+create or replace function factorial(a in number)return number is res number;
+begin
+if a=0 then 
+return 1;
+end if;
+return a*factorial(a-1);
+end;
+
+select factorial(5) from dual;
+
+
+--function 4
+create or replace function armstrong(a in number) return number is flag number;
+temp number:=a;
+remm number;
+summ number:=0;
+begin
+while temp>0 loop
+    remm:=mod(temp,10);
+    summ:=summ+power(remm,3);
+    temp:=floor(temp/10);
+end loop;
+if summ=a then
+    return 1;
+else
+    return 0;
+end if;
+end;
+
+set serveroutput on
+declare
+c number;
+begin
+c:=armstrong(154);
+if c=1 then
+dbms_output.put_line('armstrong number');
+else
+dbms_output.put_line('not armstrong number');
+end if ;
+end;
+
+
+--function 5
+create or replace function fibonacci(f in number,s in number,a in number)return number is 
+c number:=0;
+res number;
+begin
+
+if a>0 then
+    c:=f+s;
+    dbms_output.put_line(c||' ');
+    res:=fibonacci(s,c,a-1);
+end if;
+return res;
+end;
+
+set serveroutput on
+declare
+a number:=5;
+res number;
+begin
+    res:=fibonacci(0,1,5);
+    dbms_output.put_line(res);
+end;
+
+
+
+--function 6
+create or replace function empdetail(eno in number,salary out number)return emp%rowtype is
+rec emp%rowtype;
+begin
+    select * into rec from emp where empno=eno;
+    select sal into salary from emp where empno=eno;
+return rec;
+end;
+
+set serveroutput on
+declare 
+r emp%rowtype;
+salary number;
+begin
+r:=empdetail(7369,salary);
+dbms_output.put_line(r.empno|| ' '||r.ename||' '||r.deptno);
+dbms_output.put_line(salary);
+end;
+
+
+--function 7
+create or replace function high_salary_count(avgsal in number,salavg out number)return number is
+countt number;
+begin
+select count(*) into countt from emp where sal>avgsal;
+select avg(sal) into salavg from emp where sal>avgsal;
+return countt;
+end;
+
+set SERVEROUTPUT on
+declare 
+avgsal number;
+countt number;
+salavg number;
+begin
+select avg(sal) into avgsal from emp;
+countt:=high_salary_count(avgsal,salavg);
+dbms_output.put_line('count '||countt);
+dbms_output.put_line('average '||floor(avgsal));
+end;

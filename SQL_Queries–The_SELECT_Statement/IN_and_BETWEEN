@@ -1,0 +1,13 @@
+You can use multiple values in a WHERE clause via IN Operator
+--in example
+
+  select first_name,last_name,salary from hr.employees where manager_id IN (100,200,300);
+
+  select first_name,last_name,salary from hr.employees where department_id in (20,30,40);
+
+--between
+BETWEEN operator is used in the Where Clause and it is used to select values within a given range.
+-- between example
+  select first_name,last_name,salary from hr.employees where department_id BETWEEN 100 AND 500;
+  
+  select first_name,last_name,salary from hr.employees where salary between 15000 and 25000;

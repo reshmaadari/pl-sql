@@ -1,0 +1,15 @@
+
+A package is a schema object that groups PL/SQL types, variables,
+constants, subprograms, cursors, and exceptions based on their logical 
+relationships. A package is assembled and saved in the database, where
+it can be shared by numerous apps.
+
+A specification that lists the public elements that can be referred 
+to from outside the package is always present in a package.
+
+
+Cursors or other subprograms must be present in the package if the 
+public items do. The body must specify the code for public subprograms 
+and public cursor queries. The body may additionally declare and 
+define private objects that are required for the proper operation
+of the package but which cannot be referenced from outside the package.

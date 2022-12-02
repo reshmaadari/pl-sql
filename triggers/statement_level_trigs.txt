@@ -1,0 +1,12 @@
+CREATE OR REPLACE TRIGGER mytrg
+    BEFORE UPDATE OF emp  
+    ON emp
+DECLARE
+    dept NUMBER;
+BEGIN
+    dept := select deptno from emp where ename like 'JONES';
+
+    IF dept in (10,20) THEN
+        raise_application_error(-20100,'Cannot update emp detatils from departments 10 and 20');
+    END IF;
+END;

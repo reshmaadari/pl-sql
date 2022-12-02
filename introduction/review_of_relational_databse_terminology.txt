@@ -1,0 +1,39 @@
+Overview : 
+
+A relational database stores data across multiple tables that are linked together through related fields.
+Desktop databases are designed to store data locally, to be accessed on an individual personal computer system.
+Server databases are designed to be stored on a server that can be accessed over a network by a large number of users on client devices.
+A relation is a table in a database.
+A tuple is a row in a database table. This is also known as a record.
+An attribute is an individual data item in a record. This is also known as a field.
+The domain is all the possible allowable values for an attribute.
+The cardinality is how unique an attribute is in terms of its data values.
+A select operation retrieves a subset of tuples from a relation.
+A union operation retrieves all the tuples from two relations combined together.
+A intersect operation retrieves the tuples from two relations that appear in both relations.
+A join operation combines the attributes from two relations.
+
+RDMS Terminologies include Database, Table, Columns, Rows, Primary key, Foreign Key, Composite key etc.
+
+Database     : A relational database (RDB) is a way of structuring information in tables, rows, and columns. 
+               i.e. Database is a collection of tables like <Student>, <Professors>, etc.
+Table        : A relational table is a table of columns or fields that describe a listing (or rows) of data.
+               Simply a table is a collection of rows and columns.
+Column       : A column is a list of values, usually belonging to a particular field, displayed vertically in a table.
+               In a relational database table, values within a column each correspond to a different record. Values in a column share a data type. 
+Row          : A row is a single group of related data within a table, Row is also called a tuple in RDBMS.         
+Primary Key  : A primary key is a column or a set of columns in a table whose values uniquely identify a row in the table.
+               A primary key cannot have null values.
+Foreign Key  : A foreign key is a column or a set of columns in a table whose values correspond to the values of the primary key in another table. 
+               In order to add a row with a given foreign key value, there must exist a row in the related table with the same primary key value.
+Super Key    : Super key is a single key or a group of multiple keys that can uniquely identify tuples in a table.       
+               Super Key can contain multiple attributes that might not be able to independently identify tuples in a table, 
+               but when grouped with certain keys, they can identify tuples uniquely.      
+Composite Key: A composite key is a candidate key that consists of two or more attributes (table columns) 
+               that together uniquely identify an entity occurrence (table row).
+Candidate key: Candidate key is a single key or a group of multiple keys that uniquely identify rows in a table. 
+               A Candidate key is a subset of Super keys and is devoid of any unnecessary attributes that are not important for uniquely identifying tuples. 
+               The value for the Candidate key is unique and non-null for all tuples.  
+ ACID Properties :RDBMS follows the concepts of Atomicity, Consistency, Isolation, and Durability (normally shortened as ACID). 
+               These concepts are applied on transactions, which manipulate data in a database. 
+               ACID properties help the database stay healthy in multi-transactional environments and in case of failure.

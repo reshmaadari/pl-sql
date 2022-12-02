@@ -1,0 +1,15 @@
+DECLARE
+MSG VARCHAR2(30);
+N number:= 83;
+BEGIN
+FOR I IN 2..ROUND(SQRT(N)) LOOP
+IF N MOD I = 0 THEN
+MSG := ' is not a prime number';
+GOTO WHEN_PRIME;
+END IF;
+END LOOP;
+MSG := ' is a prime number';
+<< WHEN_PRIME >>
+DBMS_OUTPUT.PUT_LINE(TO_CHAR(N) || MSG);
+END;
+

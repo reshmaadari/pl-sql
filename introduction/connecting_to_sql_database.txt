@@ -1,0 +1,9 @@
+
+A database connection is a SQL Developer object that specifies the necessary information for connecting to a specific database, as a specific user of that database. 
+You must have at least one database connection (existing, created, or imported) to use SQL Developer. To create a database connection , perform the following steps:
+-> In a terminal window, set the environment variable. Change directories to the sqldeveloper directory under $ORACLE_HOME. 
+Invoke SQL Developer by executing the sh sqldeveloper.sh command.
+-> In the Connections navigator, right-click the Connections node and select New Connection.
+-> Enter a connection name of your choice, username of system and password for the SYSTEM user. Select "Save Password" if you want to save your password for future connections as this user. 
+Accept the default connection type and role. Enter the hostname, port, and SID. You can click Test to ensure that the connection works correctly. Click Connect.
+-> Your connection is displayed in the Connections tab on the left side and a SQL worksheet is opened automatically.

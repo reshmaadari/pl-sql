@@ -1,0 +1,9 @@
+CREATE OR REPLACE PACKAGE BODY my_package AS
+  FUNCTION my_func RETURN VARCHAR2 IS
+    BEGIN  
+      RETURN 'Practicing pl/sql';
+    END my_func;  
+END my_pack; 
+
+
+drop package myPack;
