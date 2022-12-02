@@ -1,1 +1,67 @@
 
+
+---simple case statement for grades
+  DECLARE
+  grade CHAR(1);
+  BEGIN
+  grade := 'B';
+
+  CASE grade
+    WHEN 'A' THEN DBMS_OUTPUT.PUT_LINE('Excellent');
+    WHEN 'B' THEN DBMS_OUTPUT.PUT_LINE('Very Good');
+    WHEN 'C' THEN DBMS_OUTPUT.PUT_LINE('Good');
+    WHEN 'D' THEN DBMS_OUTPUT.PUT_LINE('Fair');
+    WHEN 'F' THEN DBMS_OUTPUT.PUT_LINE('Poor');
+    ELSE DBMS_OUTPUT.PUT_LINE('No such grade');
+  END CASE;
+  END;
+  /
+  
+----------using sys
+  SELECT table_name,
+CASE
+  WHEN owner='SYS' THEN 'The owner is SYS'
+  WHEN owner='SYSTEM' THEN 'The owner is SYSTEM'
+  ELSE 'The owner is another value'
+END
+FROM all_tables;
+/
+
+----------using number variable
+DECLARE
+  n number := 2;
+BEGIN
+  CASE n
+    WHEN 1 THEN dbms_output.put_line('n = 1');
+    WHEN 2 THEN
+      dbms_output.put_line('n = 2');
+      dbms_output.put_line('That implies n > 1');
+    WHEN 2+2 THEN
+      dbms_output.put_line('n = 4');
+    ELSE dbms_output.put_line('n is some other value.');
+  END CASE;
+END;
+/
+
+------using operator
+  DECLARE
+  quantity NUMBER := 100;
+  projected NUMBER := 30;
+  needed NUMBER := 999;
+BEGIN
+<<here>>
+  CASE
+    WHEN quantity is null THEN
+      dbms_output.put_line('Quantity not available');
+    WHEN quantity + projected >= needed THEN
+      dbms_output.put_line('Quantity ' || quantity ||
+        ' should be enough if projections are met.');
+    WHEN quantity >= 0 THEN
+      dbms_output.put_line('Quantity ' || quantity || ' is probably not enough.');
+  END CASE here;
+  EXCEPTION
+    WHEN CASE_NOT_FOUND THEN
+      dbms_output.put_line('Somehow quantity is less than 0.');
+END;
+/
+ 
