@@ -1,35 +1,111 @@
-----example 1
-CREATE OR REPLACE PACKAGE BODY cust_sal AS  
-   
-   PROCEDURE find_sal(c_id customers.id%TYPE) IS 
-   c_sal customers.salary%TYPE; 
-   BEGIN 
-      SELECT salary INTO c_sal 
-      FROM customers 
-      WHERE id = c_id; 
-      dbms_output.put_line('Salary: '|| c_sal); 
-   END find_sal; 
-END cust_sal; 
+create or replace package pkg1 as
+    function fibonacci(f number,s number, a number)return number;
+    function armstrong(a in number)return number;
+    procedure welcome(dept number);
+    function reversee(a in number)return number ;
+    function factorial(a in number)return number;
+end pkg1;  
 
-DECLARE 
-   code customers.id%type := &cc_id; 
-BEGIN 
-   cust_sal.find_sal(code); 
-END; 
 
---example 2
+create or replace package body pkg1 as
+    FUNCTIon fibonacci(f number,s number, a number) return number is
+        c number:=0;
+        res number;
+        begin
+        if a>0 then
+            c:=f+s;
+            dbms_output.put_line(c||' ');
+            res:=fibonacci(s,c,a-1);
+        end if;
+        return 1;
+        end fibonacci;
+    
+    function armstrong(a number) return number is
+        temp number:=a;
+        remm number;
+        summ number:=0;
+        begin
+        while temp>0 loop
+            remm:=mod(temp,10);
+            summ:=summ+power(remm,3);
+            temp:=floor(temp/10);
+        end loop;
+        if summ=a then
+            return 1;
+        else
+            return 0;
+        end if;
+        end armstrong;
+    
+    procedure welcome(dept in number) is
+        cursor empname is select ename from emp where deptno>dept;
+        emprec emp.ename%type;
+        begin
+        open empname;
+        loop
+        fetch empname into emprec ;
+        exit when empname%notfound;
+               dbms_output.put_line('Welcome '||emprec);
+           end loop;
+        close empname;
+    end welcome;
+       
+       
+    function reversee(a in number)return number is
+        temp number;
+        re number;
+        c number;
+        --res number:=0;
+        begin
+        temp:=a;
+        c:=0;
+        while temp>0 loop
+            re:=mod(temp,10);
+            c:=(re+c*10);
+            temp:=floor(temp/10);
+        end loop;
+        return c;
+        end reversee;
+        
+        
+    function factorial(a in number)return number is 
+        res number;
+        begin
+        if a=0 then 
+        return 1;
+        end if;
+        return a*factorial(a-1);
+        end;
+end pkg1;
 
-CREATE PACKAGE citi AS
-    FUNCTION p_strng RETURN VARCHAR2; 
-END citi; 
 
-CREATE OR REPLACE PACKAGE BODY citi AS
+set serveroutput on
+declare
+f number:=0;
+s number:=1;
+a number:=10;
 
-  FUNCTION p_strng RETURN VARCHAR2 IS
-    BEGIN  
-      RETURN 'Software Testing Help!';
-    END p_strng;  
-END citi; 
-BEGIN
-  DBMS_OUTPUT.PUT_LINE (citi.p_strng);
-END; 
+arm_num number:=153;
+res number;
+
+rever number;
+begin
+dbms_output.put_line('fibonacci series is ');
+res:=pkg1.fibonacci(f,s,a);
+if res>0 then
+dbms_output.put_line('fibonacci successful');
+end if;
+
+dbms_output.put_line('checking for armstrong number');
+dbms_output.put_line(arm_num|| ' - '||pkg1.armstrong(arm_num));
+
+
+dbms_output.put_line('welcome procedure');
+pkg1.welcome(10);
+
+dbms_output.put_line('reverse a number');
+rever:=pkg1.reversee(1234);
+dbms_output.put_line(rever);
+
+dbms_output.put_line(pkg1.factorial(5));
+end;
